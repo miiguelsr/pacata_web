@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home - Pacatá {% endblock %}
+{% block content %}
+
+<div class="container-lg">
+    <div class="row">
+        <div class="article-section col-3">
+            <div class="article-title rounded">
+                  <h5 class="card-title"><b>Articulos de Pacatá</b></h5>
+              </div>
+            <div class="card article-card">
+                <div class="card-body">
+                  <h5 class="card-title">Articulo 1</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">Pacatá</h6>
+                </div>
+              </div>
+            <div class="card article-card">
+                <div class="card-body">
+                  <h5 class="card-title">Articulo 2</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">Pacatá</h6>
+                </div>
+              </div>
+            <div class="card article-card">
+                <div class="card-body">
+                  <h5 class="card-title">Articulo 3</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">Pacatá</h6>
+                </div>
+              </div>
+        </div>
+        <div class="post-section col-9">
+            <a class="create-post-button rounded" href="{% url 'add_post' %}"> Crear un post </a>
+            {% for post in object_list %}
+            <div class="card post-card">
+                <div class="card-body">
+                  <h5 class="card-title"><b>{{post.title}}</b></h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.author }}</h6>
+                  <p class="card-text">{{ post.body }}</p>
+                </div>
+              </div>
+            {% endfor %}
+            <br>
+            <br>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

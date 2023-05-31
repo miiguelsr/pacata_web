@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Crear Post - Pacatá {% endblock %}
+{% block content %}
+
+{% block navbar %}{% endblock %}
+<div class="container create-post-body rounded scrollable-div">
+    
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary active">
+            <input type="radio" name="post_type" id="content" autocomplete="off" checked> Contenido
+        </label>
+        <label class="btn btn-primary">
+            <input type="radio" name="post_type" id="event" autocomplete="off"> Evento
+        </label>
+    </div>    
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+
+  <div class="content">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <img src="{% static 'images/logo.png' %}" alt="Logo de la empresa" class="logo">
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-sm-4">
+            <form method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <input type="text" name="{{ form.username.name }}" class="form-control form-control-lg register-form" placeholder="USUARIO" required>
+              </div>
+              <div class="row">
+                <input type="password" name="{{ form.password.name }}" class="form-control form-control-lg register-form" placeholder="CONTRASEÑA" required>
+              </div>
+              <div class="row">
+                <button type="submit" class="register-login-button">INICIAR SESIÓN</button>
+              </div>
+            </form>
+        </div>
+      </div>
+      <div class="row"></div>
+    </div>
+  </div>
+  <div class="row justify-content-end">
+    <a href="#" class="register-down-message">¿Olvidaste tu contraseña?</a>
+  </div>
+  <br>
+  
+  <p class="register-down-message">¿No tienes cuenta? <br><a class="register-down-message" href="{% url 'register' %}">REGISTRATE</a></p>
+</div>
+</div>
+
+{% endblock %}

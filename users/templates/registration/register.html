@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %} Registrarse - Pacatá {% endblock %}
+{% block content %}
+
+{% load static %}
+<div class="container">
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+  <div class="content">
+    <div class="row justify-content-center">
+      <div class="col-12">
+      <div class="row justify-content-center">
+        <img src="{% static 'images/logo.png' %}" alt="Logo de la empresa" class="logo">
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-sm-4">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+              <input type="text" name="{{ form.username.name }}" class="form-control form-control-lg register-form" placeholder="USUSARIO" required>
+            </div>
+            <div class="row">
+              <input type="email" name="{{ form.email.name }}" class="form-control form-control-lg register-form" placeholder="CORREO ELECTRÓNICO" required>
+            </div>
+            <div class="row">
+              <input type="password" id="password-input" name="{{ form.password1.name }}" class="form-control form-control-lg register-form" placeholder="CONTRASEÑA" required>
+              <div id="password-requirements" style="display: none;">
+                <p>La contraseña debe tener:</p>
+                <ul>
+                  <li>Al menos 8 caracteres</li>
+                  <li>Al menos una letra mayúscula</li>
+                  <li>Al menos una letra minúscula</li>
+                  <li>Al menos un número</li>
+                  <li>Al menos un símbolo</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <input type="password" name="{{ form.password2.name }}" class="form-control form-control-lg register-form" placeholder="CONFIRMAR CONTRASEÑA" required>
+            </div>
+            <div class="row">
+              <button class="register-login-button">REGISTRARSE</button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+      <div class="row"></div>
+    </div>
+  </div>
+  
+  <br>
+  <p class="register-down-message">¿Ya tienes cuenta? <br><a class="register-down-message" href="{% url 'login' %}">INICIA SESIÓN</a></p>
+</div>
+
+<script>
+  const passwordInput = document.querySelector('#password-input');
+  const passwordRequirements = document.querySelector('#password-requirements');
+
+  passwordInput.addEventListener('focus', () => {
+    passwordRequirements.style.display = 'block';
+  });
+
+  passwordInput.addEventListener('blur', () => {
+    passwordRequirements.style.display = 'none';
+  });
+</script>
+
+{% endblock %}
